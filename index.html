@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Lan House</title>
+        <link rel="stylesheet" type="text/css" href="estilo.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Lan House - Caminho até o céu</h1>
+            <h3>O que você precisa está aqui!</h3>
+        </header>
+        <div class="div">
+            <img src="imagens/computador.png" alt="Computador">
+            <br /><br />
+            <p>Valor por 15 minutos de uso: 
+                <input id="valorHora" type="number" /></p>
+            <p>Tempo de uso (minutos): 
+                <input style="margin-left: 23px;" id="tempoUso" type="number" /></p>
+            <br /> 
+            <p >
+                Valor Total a Pagar: <span id="pagamento"></span>
+            </p>
+            <button style="margin-left: 41%; width: 160px; " onclick="calcular()">Calcular Valor a Pagar</button>
+        </div>
+        <footer>
+            <h3 style="margin-top: 60px; background-color: rgba(146, 146, 146, 0.479); padding: 15px; color: white; width: 70%; margin-left: 15%;">A melhor Lan House ao seu dispor!</h3>
+        </footer>
+
+        <script>
+            var ValorHora = document.querySelector('#valorHora')
+            var TempoUso = document.querySelector('#tempoUso')
+            var Pagamento = document.querySelector('#pagamento')
+            var Tempo
+    
+            function calcular(){
+                if(TempoUso.value % 15 == 0){
+                    Tempo = parseInt(TempoUso.value) / 15;
+                }
+                else if(TempoUso.value < 15){
+                    Tempo = 1;
+                }
+                else if(TempoUso.value % 15 != 0 ){
+                    Tempo = parseInt((parseInt(TempoUso.value) /15) + 1);
+                }
+                Pagamento.innerHTML = parseInt(ValorHora.value) * Tempo;
+            }
+        </script>
+    
+    </body>
+</html>
